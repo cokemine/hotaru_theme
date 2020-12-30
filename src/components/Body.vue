@@ -29,11 +29,6 @@ import Items from "@/components/Items";
 export default {
   name: "Body",
   props: ["servers"],
-  // data() {
-  //   return {
-  //     len: this.servers.length,
-  //   }
-  // },
   components: {
     Items
   }
@@ -43,6 +38,7 @@ export default {
 #table {
   border: none;
   font-size: 1rem;
+  vertical-align: middle;
 }
 
 #table tr th {

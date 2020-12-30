@@ -60,19 +60,27 @@ body {
   html {
     font-size: 12px;
   }
+
+  #servers .progress {
+    width: 45px!important;
+  }
+
   #cards .card div.card-header span {
-    font-size: 1.7rem!important;
+    font-size: 1.7rem !important;
   }
+
   #cards .card div.card-content p {
-    font-size: 1.4rem!important;
-    margin-bottom: 0.6rem!important;
+    font-size: 1.4rem !important;
+    margin-bottom: 0.6rem !important;
   }
+
   #header {
     height: 20rem !important;
     background: url("assets/img/cover_mobile.png") no-repeat center center !important;
   }
+
   #header::after {
-    content: 'Pixiv: 86597206'!important;
+    content: 'Pixiv: 86597206' !important;
     color: #CDCDCD;
     position: absolute;
     bottom: 0;
