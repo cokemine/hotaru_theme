@@ -46,14 +46,7 @@ export default {
 
 <style>
 body {
-  margin: 0;
   background: url("./assets/img/bg_parts.png") repeat-y left top, url('./assets/img/bg.png') repeat left top;
-}
-
-@media only screen and (max-width: 992px) {
-  #location, tr td:nth-child(4) {
-    display: none;
-  }
 }
 
 @media (max-width: 768px) {
@@ -62,7 +55,7 @@ body {
   }
 
   #servers .progress {
-    width: 45px!important;
+    width: 45px !important;
   }
 
   #cards .card div.card-header span {
@@ -86,6 +79,12 @@ body {
     bottom: 0;
     right: 15px;
     z-index: 2;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  #location, tr td:nth-child(4) {
+    display: none;
   }
 }
 
@@ -113,7 +112,7 @@ body {
 
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 513px) {
   html {
     font-size: 10px;
   }

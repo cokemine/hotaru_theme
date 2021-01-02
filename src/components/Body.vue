@@ -38,16 +38,11 @@ export default {
 #table {
   border: none;
   font-size: 1rem;
+  text-align: center;
   vertical-align: middle;
 }
 
-#table tr th {
+#table thead tr th {
   color: #9da2a6;
-  text-align: center;
-}
-
-#servers {
-  text-align: center;
-  vertical-align: middle;
 }
 </style>

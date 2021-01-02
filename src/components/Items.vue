@@ -1,5 +1,5 @@
 <template>
-  <tr class="tableRow">
+  <tr class="tableRow" @click="collapsed = !collapsed">
     <td>
       <div class="ui progress" :class="{'success': getStatus, 'error': !getStatus}">
         <div class="bar" style="width: 100%" v-if="getStatus"><span> 运行中 </span>
@@ -22,40 +22,43 @@
       }}
     </td>
     <td>
-      <div class="ui progress" :class="{'success': getStatus, 'error': !getStatus}">
-        <div class="bar" :style="{'width': getCpuStatus}">
-          <span>{{ server.cpu == undefined ? '维护中' : getCpuStatus }}</span>
+      <div class="ui progress" :class="processBarStatus(getCpuStatus)">
+        <div class="bar" :style="{'width': getCpuStatus.toString() + '%'}">
+          {{ server.cpu === undefined ? '维护中' : getCpuStatus.toString() + '%' }}
         </div>
       </div>
     </td>
     <td>
-      <div class="ui progress" :class="{'success': getStatus, 'error': !getStatus}">
-        <div class="bar" :style="{'width': getRAMStatus}">
-          <span>{{ server.memory_total == undefined ? '维护中' : getRAMStatus }}</span>
+      <div class="ui progress" :class="processBarStatus(getRAMStatus)">
+        <div class="bar" :style="{'width': getRAMStatus.toString() + '%'}">
+          {{ server.memory_total === undefined ? '维护中' : getRAMStatus.toString() + '%' }}
         </div>
       </div>
     </td>
     <td>
-      <div class="ui progress" :class="{'success': getStatus, 'error': !getStatus}">
-        <div class="bar" :style="{'width': getHDDStatus}">
-          {{ server.hdd_total == undefined ? '维护中' : getHDDStatus }}
+      <div class="ui progress" :class="processBarStatus(getHDDStatus)">
+        <div class="bar" :style="{'width': getHDDStatus.toString() + '%'}">
+          {{ server.hdd_total === undefined ? '维护中' : getHDDStatus.toString() + '%' }}
         </div>
       </div>
     </td>
   </tr>
   <tr class="expandRow">
     <td colspan="12">
-      <div id="rt1">
+      <div :class="{collapsed}">
         <div id="expand_mem">内存信息: {{
-            getStatus ? (expandRowByteConvert(server.memory_used * 1024) + ' / ' + expandRowByteConvert(server.memory_total * 1024)) : '–'
+            getStatus ? (expandRowByteConvert(server.memory_used * 1024) + ' / ' +
+                expandRowByteConvert(server.memory_total * 1024)) : '–'
           }}
         </div>
         <div id="expand_swap">交换分区: {{
-            getStatus ? (expandRowByteConvert(server.swap_used * 1024) + ' / ' + expandRowByteConvert(server.swap_total * 1024)) : '–'
+            getStatus ? (expandRowByteConvert(server.swap_used * 1024) + ' / ' + expandRowByteConvert(server.swap_total *
+                1024)) : '–'
           }}
         </div>
         <div id="expand_hdd">硬盘信息: {{
-            getStatus ? (expandRowByteConvert(server.hdd_used * 1024 * 1024) + ' / ' + expandRowByteConvert(server.hdd_total * 1024 * 1024)) : '–'
+            getStatus ? (expandRowByteConvert(server.hdd_used * 1024 * 1024) + ' / ' +
+                expandRowByteConvert(server.hdd_total * 1024 * 1024)) : '–'
           }}
         </div>
         <div id="expand_custom"></div>
@@ -68,19 +71,24 @@
 export default {
   name: "Items",
   props: ["server"],
+  data() {
+    return {
+      collapsed: true
+    }
+  },
   computed: {
     getStatus() {
       if (this.server.online4 || this.server.online6) return true;
       else return false;
     },
     getCpuStatus() {
-      return this.server.cpu == undefined ? "100%" : this.server.cpu + "%";
+      return this.server.cpu == undefined ? 100 : this.server.cpu;
     },
     getRAMStatus() {
-      return this.server.memory_used == undefined ? "100%" : Math.round((this.server.memory_used / this.server.memory_total * 100)) + "%";
+      return this.server.memory_used == undefined ? 100 : Math.round((this.server.memory_used / this.server.memory_total * 100));
     },
     getHDDStatus() {
-      return this.server.hdd_used == undefined ? "100%" : Math.round((this.server.hdd_used / this.server.hdd_total * 100)) + "%";
+      return this.server.hdd_used == undefined ? 100 : Math.round((this.server.hdd_used / this.server.hdd_total * 100));
     },
     tableRowByteConvert() {
       return (data) => {
@@ -99,6 +107,13 @@ export default {
         else if (data < 1024 * 1024 * 1024 * 1024) return (data / 1024 / 1024 / 1024).toFixed(2) + " GiB";
         else return (data / 1024 / 1024 / 1024 / 1024).toFixed(2) + " TiB";
       }
+    },
+    processBarStatus() {
+      return (data) => {
+        if (data > 90) return "error";
+        else if (data > 70) return "warning";
+        else return "success";
+      }
     }
   }
 }
@@ -111,18 +126,14 @@ export default {
   vertical-align: middle;
 }
 
-#servers tr.tableRow:hover + tr.expandRow td > div {
-  height: 58px;
-}
-
-#servers tr.expandRow:hover > td > div {
-  height: 58px;
-}
-
 #servers tr.expandRow td > div {
   overflow: hidden;
-  height: 0;
   transition: height 0.5s;
+  height: 58px;
+}
+
+#servers tr.expandRow td > div.collapsed {
+  height: 0;
 }
 
 #servers .progress {
@@ -136,11 +147,7 @@ export default {
 
 #servers .bar {
   height: 25px;
-  border-radius: 6px !important;
-}
-
-#servers .bar span {
-  padding-left: 3px;
+  border-radius: 6px;
 }
 
 #servers tr td {
@@ -149,16 +156,8 @@ export default {
   border: none !important;
 }
 
-#servers tr td:first-child div.progress div.bar span, #servers tr td div.progress.error div.bar span {
-  padding-left: 0;
-}
-
-#servers tr td:not(:first-child) div.progress.success {
-  text-align: left !important;
-}
-
 #servers tr td:not(:first-child) div.progress.success div.bar {
-  text-align: left !important;
+  text-align: center;
   min-width: 0;
 }
 
