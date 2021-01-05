@@ -32,6 +32,7 @@ export default {
   padding: 24px;
   box-shadow: 5px 5px 25px 0 rgba(46, 61, 73, .2);
   border-radius: .375rem;
+  background-color: rgba(255,255,255,.5);
 }
 .card div.bar {
   min-width: 0;
