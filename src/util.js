@@ -1,16 +1,15 @@
 export default {
     getStatus() {
-        if (this.server.online4 || this.server.online6) return true;
-        else return false;
+        return (this.server.online4 || this.server.online6);
     },
     getCpuStatus() {
-        return this.server.cpu == undefined ? 100 : this.server.cpu;
+        return this.server.cpu === undefined ? 100 : this.server.cpu;
     },
     getRAMStatus() {
-        return this.server.memory_used == undefined ? 100 : Math.round((this.server.memory_used / this.server.memory_total * 100));
+        return this.server.memory_used === undefined ? 100 : Math.round((this.server.memory_used / this.server.memory_total * 100));
     },
     getHDDStatus() {
-        return this.server.hdd_used == undefined ? 100 : Math.round((this.server.hdd_used / this.server.hdd_total * 100));
+        return this.server.hdd_used === undefined ? 100 : Math.round((this.server.hdd_used / this.server.hdd_total * 100));
     },
     tableRowByteConvert() {
         return (data) => {

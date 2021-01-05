@@ -68,7 +68,7 @@
 </template>
 
 <script>
-import util from '../util'
+import util from '@/util'
 
 export default {
   name: "Items",
@@ -92,14 +92,14 @@ export default {
 #servers tr.expandRow td > div {
   overflow: hidden;
   transition: height 0.5s;
-  height: 58px;
+  height: 57px;
 }
 
 #servers tr.expandRow td > div.collapsed {
   height: 0;
 }
 
-#servers .progress {
+#servers div.progress {
   display: inline-block;
   overflow: hidden;
   height: 25px;
@@ -108,25 +108,18 @@ export default {
   margin-bottom: 0;
 }
 
-#servers .bar {
+#servers div.progress div.bar {
   height: 25px;
   border-radius: 6px;
+  min-width: 0;
+  font-size: 0.95rem;
+  line-height: 25px;
+  color: white;
 }
 
 #servers tr td {
   color: #616366;
   font-weight: bold;
   border: none !important;
-}
-
-#servers tr td:not(:first-child) div.progress.success div.bar {
-  text-align: center;
-  min-width: 0;
-}
-
-#servers .bar {
-  font-size: 0.95rem;
-  line-height: 25px;
-  color: white;
 }
 </style>

@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import util from '../util'
+import util from '@/util'
 
 export default {
   name: "CardItem",
@@ -32,7 +32,6 @@ export default {
   padding: 24px;
   box-shadow: 5px 5px 25px 0 rgba(46, 61, 73, .2);
   border-radius: .375rem;
-  -webkit-border-radius: .75rem;
 }
 .card div.bar {
   min-width: 0;
@@ -55,16 +54,14 @@ export default {
 }
 
 .card div.progress {
-  margin: 1.7em 0 1.3em;
+  margin: 1.2em 0 1.2em;
 }
 
 .card div.card-header p {
-  font-size: 1rem;
   color: #919699;
 }
 
 .card div.card-content p {
-  font-size: 1rem;
   margin-bottom: 0;
 }
 </style>

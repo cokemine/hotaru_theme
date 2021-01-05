@@ -4,7 +4,7 @@
       <h1 class="ui inverted header">
         Server Status
       </h1>
-      <p>Servers' Probe Set up with ServerStatus</p>
+      <p>Servers' Probes Set up with ServerStatus</p>
     </div>
   </div>
 </template>
