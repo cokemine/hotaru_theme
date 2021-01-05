@@ -2,7 +2,7 @@
   <Header></Header>
   <Body :servers="servers"></Body>
   <UpdateTime :updated="updated"></UpdateTime>
-  <Card></Card>
+  <Card :servers="servers"></Card>
   <Footer></Footer>
 </template>
 

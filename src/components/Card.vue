@@ -1,7 +1,7 @@
 <template>
   <div class="ui container" id="cards">
     <div class="ui doubling three column grid">
-      <CardItem></CardItem>
+      <CardItem v-for="(server, index) in servers" :key="index" :server="server"></CardItem>
     </div>
   </div>
 </template>
@@ -11,6 +11,7 @@ import CardItem from "@/components/CardItem";
 
 export default {
   name: "Card",
+  props: ["servers"],
   components: {
     CardItem
   }
