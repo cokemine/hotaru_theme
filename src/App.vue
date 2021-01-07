@@ -60,17 +60,9 @@ div.bar {
   min-width: 0 !important;
 }
 
-p {
-  margin: 0 auto !important;
-}
-
 /*Responsive*/
 @media (max-width: 1200px) {
-  body {
-    font-size: 12px;
-  }
-
-  html {
+  html, body {
     font-size: 12px;
   }
 }
@@ -89,7 +81,8 @@ p {
   html {
     font-size: 10px;
   }
-  #servers .progress {
+
+  #servers div.progress {
     width: 45px !important;
   }
 

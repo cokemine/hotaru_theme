@@ -23,10 +23,11 @@ export default {
   padding-top: 48px;
   padding-bottom: 55px;
 }
+
 @media only screen and (max-width: 767px) {
   #cards .column {
-    width: 100%!important;
-    margin: 0 auto!important;
+    width: 100% !important;
+    margin: 0 auto !important;
   }
 }
 </style>

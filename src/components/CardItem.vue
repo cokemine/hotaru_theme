@@ -32,7 +32,7 @@ div.card {
   padding: 24px;
   box-shadow: 5px 5px 25px 0 rgba(46, 61, 73, .2);
   border-radius: .375rem;
-  background-color: rgba(255,255,255,.5);
+  background-color: rgba(255, 255, 255, .5);
 }
 
 div.card div.card-header img {
@@ -49,13 +49,14 @@ div.card div.card-header span {
 
 div.card div.card-header p {
   padding-top: 5px;
+  color: #919699;
+}
+
+div.card div.card-content p {
+  margin-bottom: 0;
 }
 
 div.card div.progress {
   margin: 1.2em 0;
-}
-
-div.card div.card-header p {
-  color: #919699;
 }
 </style>

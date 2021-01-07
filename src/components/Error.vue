@@ -12,5 +12,6 @@ export default {
 p {
   text-align: center;
   color: #616366;
+  margin-bottom: 0;
 }
 </style>

@@ -61,7 +61,7 @@
                 expandRowByteConvert(server.hdd_total * 1024 * 1024)) : '–'
           }}
         </div>
-<!--        <div id="expand_custom">{{server.custom}}</div>-->
+        <!--        <div id="expand_custom">{{server.custom}}</div>-->
       </div>
     </td>
   </tr>
@@ -92,7 +92,7 @@ tr.tableRow {
 tr.expandRow td > div {
   overflow: hidden;
   transition: height 0.5s;
-  height: 57px;
+  height: 54px;
 }
 
 tr.expandRow td > div.collapsed {

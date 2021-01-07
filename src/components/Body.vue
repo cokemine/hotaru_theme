@@ -36,6 +36,7 @@ export default {
 </script>
 <style scoped>
 #table {
+  font-size: 1rem;
   border: none;
   text-align: center;
   vertical-align: middle;
