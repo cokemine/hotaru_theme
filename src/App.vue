@@ -1,5 +1,6 @@
 <template>
   <Header></Header>
+  <Error v-show="!status"></Error>
   <Body :servers="servers"></Body>
   <UpdateTime :updated="updated"></UpdateTime>
   <Card :servers="servers"></Card>
@@ -8,6 +9,7 @@
 
 <script>
 import Header from '@/components/Header';
+import Error from "@/components/Error";
 import Body from '@/components/Body';
 import UpdateTime from "@/components/UpdateTime";
 import Card from '@/components/Card'
@@ -19,11 +21,13 @@ export default {
   data() {
     return {
       servers: null,
-      updated: 0
+      updated: 0,
+      status: false
     }
   },
   components: {
     Header,
+    Error,
     Body,
     Card,
     Footer,
@@ -33,11 +37,13 @@ export default {
     setInterval(() => {
       axios.get('json/stats.json')
           .then(res => {
-            this.servers = res.data.servers
-            this.updated = res.data.updated
+            this.servers = res.data.servers;
+            this.updated = res.data.updated;
+            this.status = true;
           })
           .catch((err) => {
             console.log(err);
+            this.status = false;
           });
     }, 2000);
   }
@@ -49,11 +55,40 @@ body {
   background: url("./assets/img/bg_parts.png") repeat-y left top, url('./assets/img/bg.png') repeat left top;
 }
 
-@media (max-width: 768px) {
-  html {
+/*Global*/
+div.bar {
+  min-width: 0 !important;
+}
+
+p {
+  margin: 0 auto !important;
+}
+
+/*Responsive*/
+@media (max-width: 1200px) {
+  body {
     font-size: 12px;
   }
 
+  html {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  #type, tr td:nth-child(3) {
+    display: none;
+  }
+
+  #location, tr td:nth-child(4) {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 10px;
+  }
   #servers .progress {
     width: 45px !important;
   }
@@ -73,7 +108,7 @@ body {
   }
 
   #header::after {
-    content: 'Pixiv: 86597206' !important;
+    content: 'Pixiv: 86597206';
     color: #CDCDCD;
     position: absolute;
     bottom: 0;
@@ -82,41 +117,25 @@ body {
   }
 }
 
-@media only screen and (max-width: 992px) {
-  #location, tr td:nth-child(4) {
-    display: none;
-  }
-}
-
 @media only screen and (max-width: 720px) {
-  #type, tr td:nth-child(3) {
-    display: none;
-  }
-
   #uptime, tr td:nth-child(5) {
     display: none;
   }
 }
 
-@media only screen and (max-width: 600px) {
-
+@media only screen and (max-width: 660px) {
   #load, tr td:nth-child(6) {
     display: none;
   }
 }
 
-@media only screen and (max-width: 533px) {
+@media only screen and (max-width: 600px) {
   #traffic, tr td:nth-child(8) {
     display: none;
   }
-
 }
 
-@media only screen and (max-width: 513px) {
-  html {
-    font-size: 10px;
-  }
-
+@media only screen and (max-width: 533px) {
   #name, tr td:nth-child(2) {
     min-width: 20px;
     max-width: 60px;

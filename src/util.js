@@ -11,6 +11,13 @@ export default {
     getHDDStatus() {
         return this.server.hdd_used === undefined ? 100 : Math.round((this.server.hdd_used / this.server.hdd_total * 100));
     },
+    getProcessBarStatus() {
+        return (data) => {
+            if (data > 90) return "error";
+            else if (data > 70) return "warning";
+            else return "success";
+        }
+    },
     tableRowByteConvert() {
         return (data) => {
             if (data < 1024) return data.toFixed(0) + "B";
@@ -27,13 +34,6 @@ export default {
             else if (data < 1024 * 1024 * 1024) return (data / 1024 / 1024).toFixed(2) + " MiB";
             else if (data < 1024 * 1024 * 1024 * 1024) return (data / 1024 / 1024 / 1024).toFixed(2) + " GiB";
             else return (data / 1024 / 1024 / 1024 / 1024).toFixed(2) + " TiB";
-        }
-    },
-    processBarStatus() {
-        return (data) => {
-            if (data > 90) return "error";
-            else if (data > 70) return "warning";
-            else return "success";
         }
     }
 }

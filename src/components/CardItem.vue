@@ -28,41 +28,34 @@ export default {
 </script>
 
 <style scoped>
-.card {
+div.card {
   padding: 24px;
   box-shadow: 5px 5px 25px 0 rgba(46, 61, 73, .2);
   border-radius: .375rem;
   background-color: rgba(255,255,255,.5);
 }
-.card div.bar {
-  min-width: 0;
-}
 
-.card div.card-header img {
+div.card div.card-header img {
   vertical-align: middle;
   border-radius: 5px;
   margin-right: 7px;
 }
 
-.card div.card-header span {
+div.card div.card-header span {
   font-size: 1.25rem;
   font-weight: normal;
   vertical-align: middle;
 }
 
-.card div.card-header p {
+div.card div.card-header p {
   padding-top: 5px;
 }
 
-.card div.progress {
-  margin: 1.2em 0 1.2em;
+div.card div.progress {
+  margin: 1.2em 0;
 }
 
-.card div.card-header p {
+div.card div.card-header p {
   color: #919699;
-}
-
-.card div.card-content p {
-  margin-bottom: 0;
 }
 </style>

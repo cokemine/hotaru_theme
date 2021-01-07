@@ -12,7 +12,7 @@
     <td>{{ server.type }}</td>
     <td>{{ server.location }}</td>
     <td>{{ server.uptime || '–' }}</td>
-    <td>{{ server.load == undefined ? '–' : server.load }}</td>
+    <td>{{ server.load === undefined ? '–' : server.load }}</td>
     <td>{{
         getStatus ? (tableRowByteConvert(server.network_rx) + ' | ' + tableRowByteConvert(server.network_tx)) : '–'
       }}
@@ -22,30 +22,30 @@
       }}
     </td>
     <td>
-      <div class="ui progress" :class="processBarStatus(getCpuStatus)">
+      <div class="ui progress" :class="getProcessBarStatus(getCpuStatus)">
         <div class="bar" :style="{'width': getCpuStatus.toString() + '%'}">
-          {{ server.cpu === undefined ? '维护中' : getCpuStatus.toString() + '%' }}
+          {{ getStatus ? getCpuStatus.toString() + '%' : '维护中' }}
         </div>
       </div>
     </td>
     <td>
-      <div class="ui progress" :class="processBarStatus(getRAMStatus)">
+      <div class="ui progress" :class="getProcessBarStatus(getRAMStatus)">
         <div class="bar" :style="{'width': getRAMStatus.toString() + '%'}">
-          {{ server.memory_total === undefined ? '维护中' : getRAMStatus.toString() + '%' }}
+          {{ getStatus ? getRAMStatus.toString() + '%' : '维护中' }}
         </div>
       </div>
     </td>
     <td>
-      <div class="ui progress" :class="processBarStatus(getHDDStatus)">
+      <div class="ui progress" :class="getProcessBarStatus(getHDDStatus)">
         <div class="bar" :style="{'width': getHDDStatus.toString() + '%'}">
-          {{ server.hdd_total === undefined ? '维护中' : getHDDStatus.toString() + '%' }}
+          {{ getStatus ? getHDDStatus.toString() + '%' : '维护中' }}
         </div>
       </div>
     </td>
   </tr>
   <tr class="expandRow">
     <td colspan="12">
-      <div :class="{collapsed}">
+      <div :class="{collapsed}" :style="{height: !getStatus && '0'}">
         <div id="expand_mem">内存信息: {{
             getStatus ? (expandRowByteConvert(server.memory_used * 1024) + ' / ' +
                 expandRowByteConvert(server.memory_total * 1024)) : '–'
@@ -61,7 +61,7 @@
                 expandRowByteConvert(server.hdd_total * 1024 * 1024)) : '–'
           }}
         </div>
-        <div id="expand_custom"></div>
+<!--        <div id="expand_custom">{{server.custom}}</div>-->
       </div>
     </td>
   </tr>
@@ -84,40 +84,39 @@ export default {
 
 <style scoped>
 
-#servers tr.tableRow {
-  background-color: rgba(249, 249, 249, .6);
+tr.tableRow {
+  background-color: rgba(249, 249, 249, .5);
   vertical-align: middle;
 }
 
-#servers tr.expandRow td > div {
+tr.expandRow td > div {
   overflow: hidden;
   transition: height 0.5s;
   height: 57px;
 }
 
-#servers tr.expandRow td > div.collapsed {
+tr.expandRow td > div.collapsed {
   height: 0;
 }
 
-#servers div.progress {
+div.progress {
   display: inline-block;
   overflow: hidden;
   height: 25px;
   width: 50px;
   border-radius: 6px;
-  margin-bottom: 0;
+  margin-bottom: 0 !important;
 }
 
-#servers div.progress div.bar {
+div.progress div.bar {
   height: 25px;
   border-radius: 6px;
-  min-width: 0;
   font-size: 0.95rem;
   line-height: 25px;
   color: white;
 }
 
-#servers tr td {
+tr td {
   color: #616366;
   font-weight: bold;
   border: none !important;
