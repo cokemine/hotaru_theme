@@ -16,6 +16,7 @@ export default {
 <style scoped>
 #header {
   height: 25rem;
+  /*Replace your header image at this place!*/
   background: url("../assets/img/cover.png") no-repeat center center;
 }
 

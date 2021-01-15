@@ -20,8 +20,8 @@ export default {
 
 <style scoped>
 #cards {
-  padding-top: 48px;
-  padding-bottom: 55px;
+  padding-top: 3.4rem;
+  padding-bottom: 3.5rem;
 }
 
 @media only screen and (max-width: 767px) {

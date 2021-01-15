@@ -1,6 +1,6 @@
 <template>
   <Header></Header>
-  <Error v-show="!status"></Error>
+  <Error v-show="!servers"></Error>
   <Body :servers="servers"></Body>
   <UpdateTime :updated="updated"></UpdateTime>
   <Card :servers="servers"></Card>
@@ -21,8 +21,7 @@ export default {
   data() {
     return {
       servers: null,
-      updated: 0,
-      status: false
+      updated: 0
     }
   },
   components: {
@@ -39,11 +38,9 @@ export default {
           .then(res => {
             this.servers = res.data.servers;
             this.updated = res.data.updated;
-            this.status = true;
           })
           .catch((err) => {
             console.log(err);
-            this.status = false;
           });
     }, 2000);
   }
@@ -52,6 +49,7 @@ export default {
 
 <style>
 body {
+  /*Replace your background image at this place!*/
   background: url("./assets/img/bg_parts.png") repeat-y left top, url('./assets/img/bg.png') repeat left top;
 }
 
@@ -78,25 +76,26 @@ div.bar {
 }
 
 @media (max-width: 768px) {
-  html {
-    font-size: 10px;
+  html, body {
+    font-size: 11px;
   }
 
   #servers div.progress {
-    width: 45px !important;
+    width: 40px !important;
   }
 
   #cards .card div.card-header span {
-    font-size: 1.7rem !important;
+    font-size: 1.55rem !important;
   }
 
   #cards .card div.card-content p {
-    font-size: 1.4rem !important;
+    font-size: 1.25rem !important;
     margin-bottom: 0.6rem !important;
   }
 
   #header {
     height: 20rem !important;
+    /*Replace your header image (for mobile use)at this place!*/
     background: url("assets/img/cover_mobile.png") no-repeat center center !important;
   }
 

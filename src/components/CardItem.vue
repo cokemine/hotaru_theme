@@ -31,8 +31,8 @@ export default {
 div.card {
   padding: 24px;
   box-shadow: 5px 5px 25px 0 rgba(46, 61, 73, .2);
-  border-radius: .375rem;
-  background-color: rgba(255, 255, 255, .5);
+  border-radius: .5rem;
+  background-color: rgba(255, 255, 255, .7);
 }
 
 div.card div.card-header img {

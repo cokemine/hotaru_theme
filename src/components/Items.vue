@@ -45,7 +45,7 @@
   </tr>
   <tr class="expandRow">
     <td colspan="12">
-      <div :class="{collapsed}" :style="{height: !getStatus && '0'}">
+      <div :class="{collapsed}" :style="{'max-height': !getStatus && '0'}">
         <div id="expand_mem">内存信息: {{
             getStatus ? (expandRowByteConvert(server.memory_used * 1024) + ' / ' +
                 expandRowByteConvert(server.memory_total * 1024)) : '–'
@@ -85,18 +85,18 @@ export default {
 <style scoped>
 
 tr.tableRow {
-  background-color: rgba(249, 249, 249, .5);
+  background-color: rgba(249, 249, 249, .7);
   vertical-align: middle;
 }
 
 tr.expandRow td > div {
   overflow: hidden;
-  transition: height 0.5s;
-  height: 54px;
+  transition: max-height .65s ease;
+  max-height: 60px;
 }
 
 tr.expandRow td > div.collapsed {
-  height: 0;
+  max-height: 0;
 }
 
 div.progress {
@@ -111,7 +111,7 @@ div.progress {
 div.progress div.bar {
   height: 25px;
   border-radius: 6px;
-  font-size: 0.95rem;
+  font-size: .9rem;
   line-height: 25px;
   color: white;
 }
