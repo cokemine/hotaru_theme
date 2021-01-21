@@ -1,0 +1,15 @@
+name: 'Update Frontend'
+on:
+  push:
+    branches:
+      - main
+jobs:
+  Update_Frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Repository Dispatch'
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          repository: CokeMine/ServerStatus-Hotaru
+          event-type: Build Frontend

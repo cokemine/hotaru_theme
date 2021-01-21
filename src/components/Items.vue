@@ -45,7 +45,7 @@
   </tr>
   <tr class="expandRow">
     <td colspan="12">
-      <div :class="{collapsed}" :style="{'max-height': !getStatus && '0'}">
+      <div :class="{collapsed}" :style="{'max-height': getStatus ? '' : '0'}">
         <div id="expand_mem">内存信息: {{
             getStatus ? (expandRowByteConvert(server.memory_used * 1024) + ' / ' +
                 expandRowByteConvert(server.memory_total * 1024)) : '–'
