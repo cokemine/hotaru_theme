@@ -1,21 +1,24 @@
 <template>
   <div class="ui container" id="cards">
     <div class="ui doubling three column grid">
-      <CardItem v-for="(server, index) in servers" :key="index" :server="server"></CardItem>
+      <CardItem v-for="(server,index) of servers" :key="index" :server="server"></CardItem>
     </div>
   </div>
 </template>
 
-<script>
-import CardItem from "@/components/CardItem";
+<script lang="ts">
+import {defineComponent, PropType} from 'vue';
+import CardItem from '@/components/CardItem.vue';
 
-export default {
+export default defineComponent({
   name: "Card",
-  props: ["servers"],
+  props: {
+    servers: Array as PropType<Array<StatusItem>>
+  },
   components: {
     CardItem
   }
-}
+})
 </script>
 
 <style scoped>

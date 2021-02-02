@@ -67,19 +67,31 @@
   </tr>
 </template>
 
-<script>
-import util from '@/util'
+<script lang="ts">
+import {defineComponent, ref, Ref, PropType} from 'vue';
+import useStatus from './useStatus'
 
-export default {
+interface Data {
+  "collapsed": boolean;
+}
+
+export default defineComponent({
   name: "Items",
-  props: ["server"],
-  data() {
-    return {
-      collapsed: true
+  props: {
+    server: {
+      type: Object as PropType<StatusItem>,
+      default: {}
     }
   },
-  computed: util
-}
+  setup(props) {
+    const collapsed: Ref<boolean> = ref(true);
+    const utils = useStatus(props);
+    return {
+      collapsed,
+      ...utils
+    }
+  }
+})
 </script>
 
 <style scoped>

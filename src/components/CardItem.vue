@@ -17,14 +17,27 @@
   </div>
 </template>
 
-<script>
-import util from '@/util'
+<script lang="ts">
+import {defineComponent, PropType, ref, Ref} from 'vue';
+import useStatus from './useStatus'
 
-export default {
+export default defineComponent({
   name: "CardItem",
-  props: ["server"],
-  computed: util
-}
+  props: {
+    server: {
+      type: Object as PropType<StatusItem>,
+      default: {}
+    }
+  },
+  setup(props) {
+    const collapsed: Ref<boolean> = ref(true);
+    const utils = useStatus(props);
+    return {
+      collapsed,
+      ...utils
+    }
+  }
+})
 </script>
 
 <style scoped>

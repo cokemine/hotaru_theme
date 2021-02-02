@@ -7,23 +7,18 @@
   <Footer></Footer>
 </template>
 
-<script>
-import Header from '@/components/Header';
-import Error from "@/components/Error";
-import Body from '@/components/Body';
-import UpdateTime from "@/components/UpdateTime";
-import Card from '@/components/Card'
-import Footer from '@/components/Footer'
-import axios from "axios"
+<script lang="ts">
+import {defineComponent, ref, Ref, onMounted} from 'vue';
+import axios from 'axios'
+import Header from '@/components/Header.vue';
+import Error from '@/components/Error.vue';
+import Body from '@/components/Body.vue';
+import UpdateTime from '@/components/UpdateTime.vue';
+import Card from '@/components/Card.vue'
+import Footer from '@/components/Footer.vue'
 
-export default {
+export default defineComponent({
   name: 'App',
-  data() {
-    return {
-      servers: null,
-      updated: 0
-    }
-  },
   components: {
     Header,
     Error,
@@ -32,19 +27,25 @@ export default {
     Footer,
     UpdateTime
   },
-  mounted() {
-    setInterval(() => {
-      axios.get('json/stats.json')
-          .then(res => {
-            this.servers = res.data.servers;
-            this.updated = res.data.updated;
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-    }, 2000);
+  setup() {
+    const servers: Ref<Array<StatusItem> | undefined> = ref();
+    const updated: Ref<number | undefined> = ref();
+    onMounted(() => {
+      setInterval(() => {
+        axios.get('json/stats.json')
+            .then(res => {
+              servers.value = res.data.servers;
+              updated.value = Number(res.data.updated);
+            })
+            .catch((err) => console.log(err));
+      }, 2000);
+    });
+    return {
+      servers,
+      updated
+    }
   }
-};
+})
 </script>
 
 <style>
