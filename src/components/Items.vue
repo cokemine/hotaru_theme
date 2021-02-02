@@ -71,15 +71,11 @@
 import {defineComponent, ref, Ref, PropType} from 'vue';
 import useStatus from './useStatus'
 
-interface Data {
-  "collapsed": boolean;
-}
-
 export default defineComponent({
   name: "Items",
   props: {
     server: {
-      type: Object as PropType<StatusItem>,
+      type: Object as PropType<StatusItem | BoxItem>,
       default: {}
     }
   },

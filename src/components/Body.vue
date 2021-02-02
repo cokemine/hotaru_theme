@@ -31,7 +31,7 @@ export default defineComponent({
   name: "Body",
   props: {
     servers: {
-      type: Array as PropType<Array<StatusItem>>,
+      type: Array as PropType<Array<StatusItem | BoxItem>>,
       default: {}
     }
   },

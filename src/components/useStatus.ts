@@ -1,7 +1,7 @@
 import {computed} from 'vue';
 
 interface Props {
-    "server": StatusItem;
+    "server": StatusItem | BoxItem;
 }
 
 export default (props: Props) => {
@@ -9,13 +9,13 @@ export default (props: Props) => {
         return props.server.online4 || props.server.online6;
     });
     const getCpuStatus = computed((): number => {
-        return props.server.cpu === undefined ? 100 : props.server.cpu;
+        return (props.server as StatusItem).cpu === undefined ? 100 : (props.server as StatusItem).cpu;
     });
     const getRAMStatus = computed((): number => {
-        return props.server.memory_total === undefined ? 100 : Math.round((props.server.memory_used / props.server.memory_total * 100));
+        return (props.server as StatusItem).memory_total === undefined ? 100 : Math.round(((props.server as StatusItem).memory_used / (props.server as StatusItem).memory_total * 100));
     });
     const getHDDStatus = computed((): number => {
-        return props.server.hdd_total === undefined ? 100 : Math.round((props.server.hdd_used / props.server.hdd_total * 100));
+        return (props.server as StatusItem).hdd_total === undefined ? 100 : Math.round(((props.server as StatusItem).hdd_used / (props.server as StatusItem).hdd_total * 100));
     });
     const getProcessBarStatus = computed(() => {
         return (data: number) => {

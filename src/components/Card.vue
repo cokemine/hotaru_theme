@@ -13,7 +13,7 @@ import CardItem from '@/components/CardItem.vue';
 export default defineComponent({
   name: "Card",
   props: {
-    servers: Array as PropType<Array<StatusItem>>
+    servers: Array as PropType<Array<StatusItem | BoxItem>>
   },
   components: {
     CardItem

@@ -25,7 +25,7 @@ export default defineComponent({
   name: "CardItem",
   props: {
     server: {
-      type: Object as PropType<StatusItem>,
+      type: Object as PropType<StatusItem | BoxItem>,
       default: {}
     }
   },

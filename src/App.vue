@@ -28,7 +28,7 @@ export default defineComponent({
     UpdateTime
   },
   setup() {
-    const servers: Ref<Array<StatusItem> | undefined> = ref();
+    const servers: Ref<Array<StatusItem | BoxItem> | undefined> = ref();
     const updated: Ref<number | undefined> = ref();
     onMounted(() => {
       setInterval(() => {

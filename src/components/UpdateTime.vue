@@ -6,8 +6,10 @@
 import {defineComponent, computed} from 'vue';
 
 export default defineComponent({
-  props: ['updated'],
   name: "UpdateTime",
+  props: {
+    updated: Number
+  },
   setup(props) {
     const timeSince = computed(() => {
       const nowTime: number = new Date().getTime() / 1000;

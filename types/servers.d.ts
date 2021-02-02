@@ -1,15 +1,15 @@
 declare global {
     interface BoxItem {
         "name": string;
-        "host":string;
+        "host": string;
         "type": string;
+        "online4": boolean;
+        "online6": boolean;
         "location": string;
         "region": string;
     }
 
     interface StatusItem extends BoxItem {
-        "online4": boolean;
-        "online6": boolean;
         "uptime": string;
         "load": number;
         "cpu": number;
@@ -23,7 +23,7 @@ declare global {
         "swap_used": number;
         "hdd_total": number;
         "hdd_used": number;
-        "custom"?: any;
+        "custom": string;
     }
 }
 export {}
