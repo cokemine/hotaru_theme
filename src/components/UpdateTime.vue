@@ -12,7 +12,7 @@ export default defineComponent({
   },
   setup(props) {
     const timeSince = computed(() => {
-      const nowTime: number = new Date().getTime() / 1000;
+      const nowTime: number = Date.now() / 1000;
       if (!props.updated)
         return "从未.";
       const seconds: number = Math.floor(nowTime - props.updated);
