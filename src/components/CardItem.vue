@@ -6,25 +6,40 @@
         <p>{{ server.type }}</p>
       </div>
       <div class="ui tiny progress success">
-        <div class="bar" :style="{width: getStatus ? getRAMStatus.toString() + '%' : '0%'}">
+        <div class="bar" :style="{width: getStatus ? `${getRAMStatus.toString()}%` : '0%'}">
         </div>
       </div>
       <div class="card-content">
-        <p>Network: {{ tableRowByteConvert(server.network_rx) + ' | ' + tableRowByteConvert(server.network_tx) }}</p>
-        <p>负载状态: {{ server.load + '%' }}</p>
+        <p>Network: {{ `${tableRowByteConvert(server.network_rx)} | ${tableRowByteConvert(server.network_tx)}` }}</p>
+        <p>负载状态: {{ `${server.load}%` }}</p>
       </div>
     </div>
   </div>
 </template>
 
-<script>
-import util from '@/util'
+<script lang="ts">
+import {defineComponent, PropType, ref, Ref} from 'vue';
+import useStatus from './useStatus'
 
-export default {
+export default defineComponent({
   name: "CardItem",
-  props: ["server"],
-  computed: util
-}
+  props: {
+    server: {
+      type: Object as PropType<StatusItem | BoxItem>,
+      default: {}
+    }
+  },
+  setup(props) {
+    const collapsed: Ref<boolean> = ref(true);
+    const {getStatus, getRAMStatus, tableRowByteConvert} = useStatus(props);
+    return {
+      collapsed,
+      getStatus,
+      getRAMStatus,
+      tableRowByteConvert
+    }
+  }
+})
 </script>
 
 <style scoped>

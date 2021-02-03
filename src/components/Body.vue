@@ -18,21 +18,27 @@
       </thead>
       <tbody id="servers">
       <!-- Servers here \o/ -->
-      <Items v-for="(server, index) in servers" :key="index" :server="server"></Items>
+      <Items v-for="(server,index) of servers" :key="index" :server="server"></Items>
       </tbody>
     </table>
   </div>
 </template>
-<script>
-import Items from "@/components/Items";
+<script lang="ts">
+import {defineComponent, PropType} from 'vue';
+import Items from '@/components/Items.vue';
 
-export default {
+export default defineComponent({
   name: "Body",
-  props: ["servers"],
+  props: {
+    servers: {
+      type: Array as PropType<Array<StatusItem | BoxItem>>,
+      default: {}
+    }
+  },
   components: {
     Items
   }
-}
+})
 </script>
 <style scoped>
 #table {

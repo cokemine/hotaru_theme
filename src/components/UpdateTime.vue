@@ -2,16 +2,20 @@
   <div class="ui container" id="updated" style="margin-left: 5px;">最后更新: {{ timeSince }}</div>
 </template>
 
-<script>
-export default {
-  props: ['updated'],
+<script lang="ts">
+import {defineComponent, computed} from 'vue';
+
+export default defineComponent({
   name: "UpdateTime",
-  computed: {
-    timeSince() {
-      const d = new Date(this.updated * 1000);
-      if (!d)
+  props: {
+    updated: Number
+  },
+  setup(props) {
+    const timeSince = computed(() => {
+      const nowTime: number = Date.now() / 1000;
+      if (!props.updated)
         return "从未.";
-      let seconds = Math.floor((new Date() - d) / 1000);
+      const seconds: number = Math.floor(nowTime - props.updated);
       let interval = Math.floor(seconds / 31536000);
       if (interval > 1)
         return interval + " 年前.";
@@ -31,9 +35,12 @@ export default {
           return Math.floor(seconds) + " seconds";*/
       else
         return "几秒前.";
+    });
+    return {
+      timeSince
     }
   }
-}
+})
 </script>
 
 <style scoped>

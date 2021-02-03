@@ -8,10 +8,12 @@
     </div>
   </div>
 </template>
-<script>
-export default {
+<script lang="ts">
+import {defineComponent} from 'vue';
+
+export default defineComponent({
   name: "Header"
-}
+})
 </script>
 <style scoped>
 #header {
@@ -33,7 +35,7 @@ export default {
 }
 
 #header::after {
-  content: 'Pixiv: 69713505';
+  content: 'Pixiv: 86597206';
   color: #CDCDCD;
   text-shadow: 1px 1px 1px #666;
   position: absolute;
