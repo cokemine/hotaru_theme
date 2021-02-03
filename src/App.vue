@@ -99,15 +99,6 @@ div.bar {
     /*Replace your header image (for mobile use)at this place!*/
     background: url("assets/img/cover_mobile.png") no-repeat center center !important;
   }
-
-  #header::after {
-    content: 'Pixiv: 86597206';
-    color: #CDCDCD;
-    position: absolute;
-    bottom: 0;
-    right: 15px;
-    z-index: 2;
-  }
 }
 
 @media only screen and (max-width: 720px) {

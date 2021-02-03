@@ -6,12 +6,12 @@
         <p>{{ server.type }}</p>
       </div>
       <div class="ui tiny progress success">
-        <div class="bar" :style="{width: getStatus ? getRAMStatus.toString() + '%' : '0%'}">
+        <div class="bar" :style="{width: getStatus ? `${getRAMStatus.toString()}%` : '0%'}">
         </div>
       </div>
       <div class="card-content">
-        <p>Network: {{ tableRowByteConvert(server.network_rx) + ' | ' + tableRowByteConvert(server.network_tx) }}</p>
-        <p>负载状态: {{ server.load + '%' }}</p>
+        <p>Network: {{ `${tableRowByteConvert(server.network_rx)} | ${tableRowByteConvert(server.network_tx)}` }}</p>
+        <p>负载状态: {{ `${server.load}%` }}</p>
       </div>
     </div>
   </div>
@@ -31,10 +31,12 @@ export default defineComponent({
   },
   setup(props) {
     const collapsed: Ref<boolean> = ref(true);
-    const utils = useStatus(props);
+    const {getStatus, getRAMStatus, tableRowByteConvert} = useStatus(props);
     return {
       collapsed,
-      ...utils
+      getStatus,
+      getRAMStatus,
+      tableRowByteConvert
     }
   }
 })
