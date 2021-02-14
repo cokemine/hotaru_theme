@@ -2,9 +2,7 @@
   <tr class="tableRow" @click="collapsed = !collapsed">
     <td>
       <div class="ui progress" :class="{'success': getStatus, 'error': !getStatus}">
-        <div class="bar" style="width: 100%" v-if="getStatus"><span> 运行中 </span>
-        </div>
-        <div class="bar" style="width: 100%" v-if="!getStatus"><span> 维护中 </span>
+        <div class="bar" style="width: 100%"><span> {{ getStatus ? '运行中' : '维护中' }} </span>
         </div>
       </div>
     </td>
@@ -90,14 +88,14 @@ export default defineComponent({
 <style scoped>
 
 tr.tableRow {
-  background-color: rgba(249, 249, 249, .7);
+  background-color: rgba(249, 249, 249, .8);
   vertical-align: middle;
 }
 
 tr.expandRow td > div {
   overflow: hidden;
-  transition: max-height .65s ease;
-  max-height: 60px;
+  transition: max-height .5s ease;
+  max-height: 4em;
 }
 
 tr.expandRow td > div.collapsed {

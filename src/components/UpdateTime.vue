@@ -11,7 +11,7 @@ export default defineComponent({
     updated: Number
   },
   setup(props) {
-    const timeSince = computed(() => {
+    const timeSince = computed((): string => {
       const nowTime: number = Date.now() / 1000;
       if (!props.updated)
         return "从未.";

@@ -2,7 +2,7 @@
   <div class="column">
     <div class="ui fluid card">
       <div class="card-header">
-        <img :src="'img/clients/' + server.region + '.png'" alt="HK"><span> {{ server.name }} </span>
+        <img :src="`img/clients/${server.region}.png`" alt="HK"><span> {{ server.name }} </span>
         <p>{{ server.type }}</p>
       </div>
       <div class="ui tiny progress success">
@@ -47,7 +47,7 @@ div.card {
   padding: 24px;
   box-shadow: 5px 5px 25px 0 rgba(46, 61, 73, .2);
   border-radius: .5rem;
-  background-color: rgba(255, 255, 255, .7);
+  background-color: rgba(255, 255, 255, .8);
 }
 
 div.card div.card-header img {
