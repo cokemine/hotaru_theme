@@ -18,7 +18,7 @@
       </thead>
       <tbody id="servers">
       <!-- Servers here \o/ -->
-      <Items v-for="(server,index) of servers" :key="index" :server="server"></Items>
+      <Items v-for="(server, index) of servers" :key="index" :server="server"></Items>
       </tbody>
     </table>
   </div>
@@ -32,7 +32,7 @@ export default defineComponent({
   props: {
     servers: {
       type: Array as PropType<Array<StatusItem | BoxItem>>,
-      default: {}
+      default: []
     }
   },
   components: {

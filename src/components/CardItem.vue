@@ -2,7 +2,7 @@
   <div class="column">
     <div class="ui fluid card">
       <div class="card-header">
-        <img :src="`img/clients/${server.region}.png`" alt="HK"><span> {{ server.name }} </span>
+        <img :src="`img/clients/${server.region}.png`" :alt="`${server.region}`"><span> {{ server.name }} </span>
         <p>{{ server.type }}</p>
       </div>
       <div class="ui tiny progress success">
@@ -18,8 +18,8 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, PropType, ref, Ref} from 'vue';
-import useStatus from './useStatus'
+import {defineComponent, PropType} from 'vue';
+import useStatus from './useStatus';
 
 export default defineComponent({
   name: "CardItem",
@@ -30,10 +30,8 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const collapsed: Ref<boolean> = ref(true);
     const {getStatus, getRAMStatus, tableRowByteConvert} = useStatus(props);
     return {
-      collapsed,
       getStatus,
       getRAMStatus,
       tableRowByteConvert

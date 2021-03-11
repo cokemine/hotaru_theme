@@ -18,6 +18,7 @@ export default defineComponent({
 <style scoped>
 #header {
   height: 25rem;
+  position: relative;
   /*Replace your header image at this place!*/
   background: url("../assets/img/cover.png") no-repeat center center;
 }
@@ -39,8 +40,8 @@ export default defineComponent({
   color: #CDCDCD;
   text-shadow: 1px 1px 1px #666;
   position: absolute;
-  bottom: 0;
   right: 15px;
+  bottom: 0;
   z-index: 2;
 }
 
@@ -51,7 +52,6 @@ export default defineComponent({
     height: 100%;
 }*/
 #header-content {
-  /*display: inline-block;*/
   text-shadow: 2px 2px 2px #666;
   position: absolute;
   z-index: 3;

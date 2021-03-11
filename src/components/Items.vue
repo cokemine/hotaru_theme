@@ -63,8 +63,8 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, ref, Ref, PropType} from 'vue';
-import useStatus from './useStatus'
+import {defineComponent, ref, PropType} from 'vue';
+import useStatus from './useStatus';
 
 export default defineComponent({
   name: "Items",
@@ -75,7 +75,7 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const collapsed: Ref<boolean> = ref(true);
+    const collapsed = ref(true);
     const utils = useStatus(props);
     return {
       collapsed,

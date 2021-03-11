@@ -1,5 +1,5 @@
 <template>
-  <div class="ui container" id="updated" style="margin-left: 5px;">最后更新: {{ timeSince }}</div>
+  <div class="ui container" id="updated">最后更新: {{ timeSince }}</div>
 </template>
 
 <script lang="ts">
@@ -46,5 +46,6 @@ export default defineComponent({
 <style scoped>
 #updated {
   margin-bottom: -15px;
+  margin-left: 5px;
 }
 </style>

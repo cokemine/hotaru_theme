@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, ref, Ref, onMounted} from 'vue';
+import {defineComponent, ref, onMounted} from 'vue';
 import axios from 'axios'
 import Header from '@/components/Header.vue';
 import Error from '@/components/Error.vue';
@@ -28,8 +28,8 @@ export default defineComponent({
     UpdateTime
   },
   setup() {
-    const servers: Ref<Array<StatusItem | BoxItem> | undefined> = ref();
-    const updated: Ref<number | undefined> = ref();
+    const servers = ref<Array<StatusItem | BoxItem>>();
+    const updated = ref<number>();
     onMounted(() => {
       setInterval(() => {
         axios.get('json/stats.json')
@@ -37,7 +37,7 @@ export default defineComponent({
               servers.value = res.data.servers;
               updated.value = Number(res.data.updated);
             })
-            .catch((err) => console.log(err));
+            .catch(err => console.log(err));
       }, 2000);
     });
     return {

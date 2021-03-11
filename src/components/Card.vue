@@ -1,7 +1,7 @@
 <template>
   <div class="ui container" id="cards">
     <div class="ui doubling three column grid">
-      <CardItem v-for="(server,index) of servers" :key="index" :server="server"></CardItem>
+      <CardItem v-for="(server, index) of servers" :key="index" :server="server"></CardItem>
     </div>
   </div>
 </template>
