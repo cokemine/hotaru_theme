@@ -12,8 +12,8 @@
         <th id="network">网络(B/s) ↓|↑</th>
         <th id="traffic">流量(B) ↓|↑</th>
         <th id="cpu">CPU</th>
-        <th id="ram">RAM</th>
-        <th id="hdd">ROM</th>
+        <th id="ram">内存</th>
+        <th id="hdd">硬盘</th>
       </tr>
       </thead>
       <tbody id="servers">
