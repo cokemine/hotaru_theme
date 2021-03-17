@@ -1,7 +1,7 @@
 import {computed} from 'vue';
 
 interface Props {
-    "server": StatusItem | BoxItem;
+    server: StatusItem | BoxItem;
 }
 
 export default (props: Props) => {
@@ -19,28 +19,28 @@ export default (props: Props) => {
     });
     const getProcessBarStatus = computed(() => {
         return (data: number) => {
-            if (data > 90) return "error";
-            else if (data > 70) return "warning";
-            else return "success";
-        }
+            if (data > 90) return 'error';
+            else if (data > 70) return 'warning';
+            else return 'success';
+        };
     });
     const tableRowByteConvert = computed(() => {
         return (data: number): string => {
-            if (data < 1024) return data.toFixed(0) + "B";
-            else if (data < 1024 * 1024) return (data / 1024).toFixed(0) + "K";
-            else if (data < 1024 * 1024 * 1024) return (data / 1024 / 1024).toFixed(1) + "M";
-            else if (data < 1024 * 1024 * 1024 * 1024) return (data / 1024 / 1024 / 1024).toFixed(2) + "G";
-            else return (data / 1024 / 1024 / 1024 / 1024).toFixed(2) + "T";
-        }
+            if (data < 1024) return data.toFixed(0) + 'B';
+            else if (data < 1024 * 1024) return (data / 1024).toFixed(0) + 'K';
+            else if (data < 1024 * 1024 * 1024) return (data / 1024 / 1024).toFixed(1) + 'M';
+            else if (data < 1024 * 1024 * 1024 * 1024) return (data / 1024 / 1024 / 1024).toFixed(2) + 'G';
+            else return (data / 1024 / 1024 / 1024 / 1024).toFixed(2) + 'T';
+        };
     });
     const expandRowByteConvert = computed(() => {
         return (data: number): string => {
-            if (data < 1024) return data.toFixed(0) + " B";
-            else if (data < 1024 * 1024) return (data / 1024).toFixed(2) + " KiB";
-            else if (data < 1024 * 1024 * 1024) return (data / 1024 / 1024).toFixed(2) + " MiB";
-            else if (data < 1024 * 1024 * 1024 * 1024) return (data / 1024 / 1024 / 1024).toFixed(2) + " GiB";
-            else return (data / 1024 / 1024 / 1024 / 1024).toFixed(2) + " TiB";
-        }
+            if (data < 1024) return data.toFixed(0) + ' B';
+            else if (data < 1024 * 1024) return (data / 1024).toFixed(2) + ' KiB';
+            else if (data < 1024 * 1024 * 1024) return (data / 1024 / 1024).toFixed(2) + ' MiB';
+            else if (data < 1024 * 1024 * 1024 * 1024) return (data / 1024 / 1024 / 1024).toFixed(2) + ' GiB';
+            else return (data / 1024 / 1024 / 1024 / 1024).toFixed(2) + ' TiB';
+        };
     });
     return {
         getStatus,
@@ -50,5 +50,5 @@ export default (props: Props) => {
         getProcessBarStatus,
         tableRowByteConvert,
         expandRowByteConvert
-    }
-}
+    };
+};

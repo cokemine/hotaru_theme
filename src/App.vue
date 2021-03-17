@@ -9,13 +9,13 @@
 
 <script lang="ts">
 import {defineComponent, ref, onMounted} from 'vue';
-import axios from 'axios'
+import axios from 'axios';
 import Header from '@/components/Header.vue';
 import Error from '@/components/Error.vue';
 import Body from '@/components/Body.vue';
 import UpdateTime from '@/components/UpdateTime.vue';
-import Card from '@/components/Card.vue'
-import Footer from '@/components/Footer.vue'
+import Card from '@/components/Card.vue';
+import Footer from '@/components/Footer.vue';
 
 export default defineComponent({
   name: 'App',
@@ -43,9 +43,9 @@ export default defineComponent({
     return {
       servers,
       updated
-    }
+    };
   }
-})
+});
 </script>
 
 <style>
@@ -96,7 +96,7 @@ div.bar {
 
   #header {
     height: 20rem !important;
-    /*Replace your header image (for mobile use)at this place!*/
+    /*Replace your header image (for mobile use) at this place!*/
     background: url("assets/img/cover_mobile.png") no-repeat center center !important;
   }
 }

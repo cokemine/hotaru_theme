@@ -22,7 +22,7 @@ import {defineComponent, PropType} from 'vue';
 import useStatus from './useStatus';
 
 export default defineComponent({
-  name: "CardItem",
+  name: 'CardItem',
   props: {
     server: {
       type: Object as PropType<StatusItem | BoxItem>,
@@ -35,9 +35,9 @@ export default defineComponent({
       getStatus,
       getRAMStatus,
       tableRowByteConvert
-    }
+    };
   }
-})
+});
 </script>
 
 <style scoped>
