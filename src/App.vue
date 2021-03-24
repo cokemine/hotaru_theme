@@ -1,45 +1,43 @@
 <template>
-  <Header></Header>
-  <Error v-show="!servers"></Error>
-  <Body :servers="servers"></Body>
-  <UpdateTime :updated="updated"></UpdateTime>
-  <Card :servers="servers"></Card>
-  <Footer></Footer>
+  <the-header/>
+  <on-error v-show="!servers"/>
+  <servers-table :servers="servers"/>
+  <update-time :updated="updated"/>
+  <servers-card :servers="servers"/>
+  <the-footer/>
 </template>
 
 <script lang="ts">
 import {defineComponent, ref, onMounted} from 'vue';
 import axios from 'axios';
-import Header from '@/components/Header.vue';
-import Error from '@/components/Error.vue';
-import Body from '@/components/Body.vue';
+import TheHeader from '@/components/TheHeader.vue';
+import OnError from '@/components/OnError.vue';
+import ServersTable from '@/components/ServersTable.vue';
 import UpdateTime from '@/components/UpdateTime.vue';
-import Card from '@/components/Card.vue';
-import Footer from '@/components/Footer.vue';
+import ServersCard from '@/components/ServersCard.vue';
+import TheFooter from '@/components/TheFooter.vue';
 
 export default defineComponent({
   name: 'App',
   components: {
-    Header,
-    Error,
-    Body,
-    Card,
-    Footer,
+    TheHeader,
+    OnError,
+    ServersTable,
+    ServersCard,
+    TheFooter,
     UpdateTime
   },
   setup() {
     const servers = ref<Array<StatusItem | BoxItem>>();
     const updated = ref<number>();
-    onMounted(() => {
-      setInterval(() => {
-        axios.get('json/stats.json')
-            .then(res => {
-              servers.value = res.data.servers;
-              updated.value = Number(res.data.updated);
-            })
-            .catch(err => console.log(err));
-      }, 2000);
-    });
+    onMounted(() => setInterval(() => {
+      axios.get('json/stats.json')
+          .then(res => {
+            servers.value = res.data.servers;
+            updated.value = Number(res.data.updated);
+          })
+          .catch(err => console.log(err));
+    }, 2000));
     return {
       servers,
       updated

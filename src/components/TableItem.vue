@@ -67,7 +67,7 @@ import {defineComponent, ref, PropType} from 'vue';
 import useStatus from './useStatus';
 
 export default defineComponent({
-  name: 'ServerItem',
+  name: 'TableItem',
   props: {
     server: {
       type: Object as PropType<StatusItem | BoxItem>,

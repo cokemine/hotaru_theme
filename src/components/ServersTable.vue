@@ -18,17 +18,21 @@
       </thead>
       <tbody id="servers">
       <!-- Servers here \o/ -->
-      <ServerItem v-for="(server, index) of servers" :key="index" :server="server"></ServerItem>
+      <!--
+      use index for the key may cause performance issues when delete a server from array,
+      but not a big matter and we cannot find a more suitable data for the unique key.
+      -->
+      <table-item v-for="(server, index) of servers" :key="index" :server="server"/>
       </tbody>
     </table>
   </div>
 </template>
 <script lang="ts">
 import {defineComponent, PropType} from 'vue';
-import ServerItem from '@/components/ServerItem.vue';
+import TableItem from '@/components/TableItem.vue';
 
 export default defineComponent({
-  name: 'Body',
+  name: 'ServersTable',
   props: {
     servers: {
       type: Array as PropType<Array<StatusItem | BoxItem>>,
@@ -36,7 +40,7 @@ export default defineComponent({
     }
   },
   components: {
-    ServerItem
+    TableItem
   }
 });
 </script>
