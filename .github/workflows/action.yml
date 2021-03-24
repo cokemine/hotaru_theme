@@ -1,15 +1,28 @@
-name: 'Update Frontend'
+name: 'Release'
 on:
   push:
     branches:
       - main
 jobs:
-  Update_Frontend:
+  Release:
     runs-on: ubuntu-latest
     steps:
-      - name: 'Repository Dispatch'
-        uses: peter-evans/repository-dispatch@v1
+      - name: 'Checkout Codes'
+        uses: actions/checkout@v2
+
+      - name: 'Setup Node.js'
+        uses: actions/setup-node@v2
         with:
-          token: ${{ secrets.REPO_ACCESS_TOKEN }}
-          repository: CokeMine/ServerStatus-Hotaru
-          event-type: Build Frontend
+          node-version: '14'
+
+      - name: 'Build'
+        run: |
+          npm ci
+          npm run build --if-present
+          mv dist hotaru-theme
+          zip -r -9 hotaru-theme.zip ./hotaru-theme
+
+      - name: 'Release'
+        run: npx semantic-release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

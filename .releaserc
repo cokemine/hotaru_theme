@@ -1,0 +1,35 @@
+{
+  "branches": [
+    "main",
+    "dev"
+  ],
+  "plugins": [
+    [
+      "@semantic-release/commit-analyzer",
+      {
+        "preset": "angular",
+        "releaseRules": [
+          {
+            "type": "*",
+            "release": "patch"
+          }
+        ],
+        "parserOpts": {
+          "noteKeywords": [
+            "BREAKING CHANGE",
+            "BREAKING CHANGES"
+          ]
+        }
+      }
+    ],
+    [
+      "@semantic-release/github",
+      {
+        "assets": {
+          "path": "hotaru-theme.zip",
+          "name": "hotaru-theme.zip"
+        }
+      }
+    ]
+  ]
+}
