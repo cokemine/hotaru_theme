@@ -1,4 +1,4 @@
-name: 'Release'
+name: Release
 on:
   push:
     branches:
@@ -7,22 +7,28 @@ jobs:
   Release:
     runs-on: ubuntu-latest
     steps:
-      - name: 'Checkout Codes'
+      - name: Checkout Codes
         uses: actions/checkout@v2
 
-      - name: 'Setup Node.js'
+      - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '14'
 
-      - name: 'Build'
+      - name: Build
+        id: build
         run: |
           npm ci
           npm run build --if-present
           mv dist hotaru-theme
           zip -r -9 hotaru-theme.zip ./hotaru-theme
+          version="v$(npm -s run env echo '$npm_package_version')"
+          echo "::set-output name=version::${version}"
 
-      - name: 'Release'
-        run: npx semantic-release
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Release
+        uses: marvinpinto/action-automatic-releases@latest
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          prerelease: false
+          title: ${{ steps.build.outputs.version }}
+          files: hotaru-theme.zip
