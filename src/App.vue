@@ -33,14 +33,14 @@ export default defineComponent({
   setup() {
     const servers = ref<Array<StatusItem | BoxItem>>();
     const updated = ref<number>();
-    onMounted(() => setInterval(() => {
+    onMounted(() => setInterval(() =>
       axios.get('json/stats.json')
         .then(res => {
           servers.value = res.data.servers;
           updated.value = Number(res.data.updated);
         })
-        .catch(err => console.log(err));
-    }, 2000));
+        .catch(err => console.log(err))
+    , 1500));
     return {
       servers,
       updated
