@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, PropType} from 'vue';
+import { defineComponent, PropType } from 'vue';
 import CardItem from '@/components/CardItem.vue';
 
 export default defineComponent({

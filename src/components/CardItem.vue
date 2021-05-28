@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, PropType} from 'vue';
+import { defineComponent, PropType } from 'vue';
 import useStatus from './useStatus';
 
 export default defineComponent({
@@ -30,7 +30,7 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const {getStatus, getRAMStatus, tableRowByteConvert} = useStatus(props);
+    const { getStatus, getRAMStatus, tableRowByteConvert } = useStatus(props);
     return {
       getStatus,
       getRAMStatus,

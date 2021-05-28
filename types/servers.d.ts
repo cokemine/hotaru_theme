@@ -1,3 +1,4 @@
+/* eslint-disable */
 declare global {
     interface BoxItem {
         "name": string;
@@ -26,4 +27,4 @@ declare global {
         "custom": string;
     }
 }
-export {}
+export {};

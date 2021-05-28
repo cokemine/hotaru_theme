@@ -63,7 +63,7 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, ref, PropType} from 'vue';
+import { defineComponent, ref, PropType } from 'vue';
 import useStatus from './useStatus';
 
 export default defineComponent({

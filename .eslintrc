@@ -4,15 +4,33 @@
     "node": true
   },
   "extends": [
-      "plugin:vue/vue3-essential",
-      "eslint:recommended",
-      "@vue/typescript/recommended"
+    "plugin:vue/vue3-essential",
+    "eslint:recommended",
+    "@vue/typescript/recommended"
   ],
   "parserOptions": {
     "parser": "@typescript-eslint/parser"
   },
   "rules": {
-    "semi": [ 1, "always" ],
-    "quotes": [ 1, "single" ]
+    "indent": [
+      1,
+      2
+    ],
+    "semi": [
+      1,
+      "always"
+    ],
+    "quotes": [
+      1,
+      "single"
+    ],
+    "brace-style": [
+      1,
+      "1tbs"
+    ],
+    "object-curly-spacing": [
+      1,
+      "always"
+    ]
   }
 }
