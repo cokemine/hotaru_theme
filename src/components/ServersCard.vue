@@ -1,5 +1,5 @@
 <template>
-  <div class="ui container" id="cards">
+  <div id="cards">
     <div class="ui doubling three column grid">
       <CardItem v-for="(server, index) of servers" :key="index" :server="server"/>
     </div>

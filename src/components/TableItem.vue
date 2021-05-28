@@ -123,5 +123,6 @@ tr td {
   color: #616366;
   font-weight: bold;
   border: none !important;
+  white-space: nowrap;
 }
 </style>

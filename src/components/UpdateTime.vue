@@ -1,5 +1,5 @@
 <template>
-  <div class="ui container" id="updated">最后更新: {{ timeSince }}</div>
+  <div id="updated">最后更新: {{ timeSince }}</div>
 </template>
 
 <script lang="ts">

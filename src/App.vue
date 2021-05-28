@@ -1,15 +1,18 @@
 <template>
   <the-header/>
   <on-error v-show="!servers"/>
-  <servers-table :servers="servers"/>
-  <update-time :updated="updated"/>
-  <servers-card :servers="servers"/>
+  <div class="container">
+    <servers-table :servers="servers"/>
+    <update-time :updated="updated"/>
+    <servers-card :servers="servers"/>
+  </div>
   <the-footer/>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref, onMounted } from 'vue';
 import axios from 'axios';
+
 import TheHeader from '@/components/TheHeader.vue';
 import OnError from '@/components/OnError.vue';
 import ServersTable from '@/components/ServersTable.vue';
@@ -58,17 +61,37 @@ div.bar {
 }
 
 /*Responsive*/
-@media (max-width: 1200px) {
-  html, body {
-    font-size: 12px;
+@media only screen and (min-width: 1200px) {
+  .container {
+    width: 1155px;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  #app .container {
+    width: auto;
+    margin: 0 .8rem;
+  }
+
+  #table thead tr th, #table tr.tableRow td {
+    padding: .7em;
+  }
+}
+
+@media only screen and (max-width: 1075px) {
+  #type, tr td:nth-child(3) {
+    display: none;
   }
 }
 
 @media only screen and (max-width: 992px) {
-  #type, tr td:nth-child(3) {
-    display: none;
+  html, body {
+    font-size: 13px;
   }
+}
 
+@media only screen and (max-width: 910px) {
   #location, tr td:nth-child(4) {
     display: none;
   }
@@ -76,24 +99,24 @@ div.bar {
 
 @media (max-width: 768px) {
   html, body {
-    font-size: 11px;
+    font-size: 12px;
   }
 
   #servers div.progress {
-    width: 40px !important;
+    width: 40px;
   }
 
   #cards .card div.card-header span {
-    font-size: 1.55rem !important;
+    font-size: 1.55rem;
   }
 
   #cards .card div.card-content p {
-    font-size: 1.25rem !important;
-    margin-bottom: 0.6rem !important;
+    font-size: 1.25rem;
+    margin-bottom: 0.6rem;
   }
 
-  #header {
-    height: 20rem !important;
+  #app #header {
+    height: 20rem;
     /*Replace your header image (for mobile use) at this place!*/
     background: url("assets/img/cover_mobile.png") no-repeat center center !important;
   }
@@ -122,7 +145,6 @@ div.bar {
     min-width: 20px;
     max-width: 60px;
     text-overflow: ellipsis;
-    white-space: nowrap;
     overflow: hidden;
   }
 
