@@ -7,7 +7,7 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'OnError'
+  name: 'TheError'
 });
 </script>
 <style scoped>

@@ -1,5 +1,5 @@
 <template>
-  <div class="ui vertical masthead center aligned segment" id="header">
+  <div class="ui vertical masthead center aligned" id="header">
     <div id="header-content">
       <h1 class="ui inverted header">
         Server Status

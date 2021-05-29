@@ -1,6 +1,6 @@
 <template>
   <the-header/>
-  <on-error v-show="!servers"/>
+  <the-error v-show="!servers"/>
   <div class="container">
     <servers-table :servers="servers"/>
     <update-time :updated="updated"/>
@@ -14,7 +14,7 @@ import { defineComponent, ref, onMounted } from 'vue';
 import axios from 'axios';
 
 import TheHeader from '@/components/TheHeader.vue';
-import OnError from '@/components/OnError.vue';
+import TheError from '@/components/TheError.vue';
 import ServersTable from '@/components/ServersTable.vue';
 import UpdateTime from '@/components/UpdateTime.vue';
 import ServersCard from '@/components/ServersCard.vue';
@@ -24,7 +24,7 @@ export default defineComponent({
   name: 'App',
   components: {
     TheHeader,
-    OnError,
+    TheError,
     ServersTable,
     ServersCard,
     TheFooter,
