@@ -52,12 +52,13 @@ export default defineComponent({
     height: 100%;
 }*/
 #header-content {
-  text-shadow: 2px 2px 2px #666;
   position: absolute;
   z-index: 3;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  text-shadow: 2px 2px 2px #666;
+  text-align: center;
 }
 
 #header h1 {
