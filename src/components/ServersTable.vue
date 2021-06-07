@@ -34,7 +34,7 @@ export default defineComponent({
   props: {
     servers: {
       type: Array as PropType<Array<StatusItem | BoxItem>>,
-      default: []
+      default: () => ([])
     }
   },
   components: {

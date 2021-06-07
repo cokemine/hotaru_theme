@@ -2,7 +2,10 @@
   <div class="column">
     <div class="ui fluid card">
       <div class="card-header">
-        <img :src="`img/clients/${server.region}.png`" :alt="`${server.region}`"><span> {{ server.name }} </span>
+        <svg viewBox="0 0 100 100" class="flag-icon">
+          <use :xlink:href="`#${server.region}`"></use>
+        </svg>
+        <span> {{ server.name }} </span>
         <p>{{ server.type }}</p>
       </div>
       <div class="ui tiny progress success">
@@ -26,7 +29,7 @@ export default defineComponent({
   props: {
     server: {
       type: Object as PropType<StatusItem | BoxItem>,
-      default: {}
+      default: () => ({})
     }
   },
   setup(props) {
@@ -48,12 +51,6 @@ div.card {
   background-color: rgba(255, 255, 255, .8);
 }
 
-div.card div.card-header img {
-  vertical-align: middle;
-  border-radius: 5px;
-  margin-right: 7px;
-}
-
 div.card div.card-header span {
   font-size: 1.25rem;
   font-weight: normal;
@@ -61,7 +58,6 @@ div.card div.card-header span {
 }
 
 div.card div.card-header p {
-  padding-top: 5px;
   color: #919699;
 }
 
@@ -71,5 +67,12 @@ div.card div.card-content p {
 
 div.card div.progress {
   margin: 1.2em 0;
+}
+
+.flag-icon {
+  display: inline;
+  vertical-align: middle;
+  width: 70px;
+  margin-right: 8px;
 }
 </style>

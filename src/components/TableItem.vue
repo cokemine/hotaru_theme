@@ -71,7 +71,7 @@ export default defineComponent({
   props: {
     server: {
       type: Object as PropType<StatusItem | BoxItem>,
-      default: {}
+      default: () => ({})
     }
   },
   setup(props) {
