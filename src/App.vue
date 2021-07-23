@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted } from 'vue';
+import { defineComponent, ref, onMounted, onBeforeUnmount } from 'vue';
 import axios from 'axios';
 
 import TheHeader from '@/components/TheHeader.vue';
@@ -33,14 +33,15 @@ export default defineComponent({
   setup() {
     const servers = ref<Array<StatusItem | BoxItem>>();
     const updated = ref<number>();
-    onMounted(() => setInterval(() =>
-      axios.get('json/stats.json')
-        .then(res => {
-          servers.value = res.data.servers;
-          updated.value = Number(res.data.updated);
-        })
-        .catch(err => console.log(err))
-    , 1500));
+    let timer: number;
+    const runFetch = () => axios.get('json/stats.json')
+      .then(res => {
+        servers.value = res.data.servers;
+        updated.value = Number(res.data.updated);
+      })
+      .catch(err => console.log(err));
+    onMounted(() => runFetch() && (timer = setInterval(runFetch, 1500)));
+    onBeforeUnmount(() => clearInterval(timer));
     return {
       servers,
       updated
