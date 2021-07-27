@@ -1,27 +1,32 @@
 <template>
-  <p>Powered by <a
-      href="https://github.com/CokeMine/ServerStatus-Hotaru">ServerStatus-Hotaru</a></p>
+  <div v-html="footer" class="footer"></div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'TheFooter'
+  name: 'TheFooter',
+  setup() {
+    return {
+      footer: window.__PRE_CONFIG__.footer
+    };
+  }
 });
 </script>
 
-<style scoped>
-p {
+<style>
+.footer p {
   text-align: center;
   padding-bottom: 15px;
 }
 
-p a {
+.footer p a {
   vertical-align: middle;
+  transition: color .3s ease;
 }
 
-p a:hover {
+.footer p a:hover {
   color: #ff779a;
 }
 </style>

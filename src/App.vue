@@ -33,6 +33,7 @@ export default defineComponent({
   setup() {
     const servers = ref<Array<StatusItem | BoxItem>>();
     const updated = ref<number>();
+    const { interval } = window.__PRE_CONFIG__;
     let timer: number;
     const runFetch = () => axios.get('json/stats.json')
       .then(res => {
@@ -40,7 +41,7 @@ export default defineComponent({
         updated.value = Number(res.data.updated);
       })
       .catch(err => console.log(err));
-    onMounted(() => runFetch() && (timer = setInterval(runFetch, 1500)));
+    onMounted(() => runFetch() && (timer = setInterval(runFetch, interval * 1000)));
     onBeforeUnmount(() => clearInterval(timer));
     return {
       servers,
