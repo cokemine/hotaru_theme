@@ -42,7 +42,7 @@ export default defineComponent({
   }
 });
 </script>
-<style scoped>
+<style>
 #table {
   font-size: 1rem;
   border: none;

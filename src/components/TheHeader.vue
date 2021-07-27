@@ -21,7 +21,7 @@ export default defineComponent({
   }
 });
 </script>
-<style scoped>
+<style>
 #header {
   height: 25rem;
   position: relative;
@@ -32,31 +32,25 @@ export default defineComponent({
 #header::before {
   content: '';
   position: absolute;
-  width: 100%;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
   z-index: 1;
+  width: 100%;
   background: rgba(66, 64, 64, .15);
 }
 
 #header::after {
   content: 'Pixiv: 86597206';
-  color: #CDCDCD;
-  text-shadow: 1px 1px 1px #666;
   position: absolute;
   right: 15px;
   bottom: 0;
   z-index: 2;
+  color: #CDCDCD;
+  text-shadow: 1px 1px 1px #666;
 }
 
-/*#header::after {
-    content: '';
-    display: inline-block;
-    vertical-align: middle;
-    height: 100%;
-}*/
 #header-content {
   position: absolute;
   z-index: 3;
@@ -75,6 +69,5 @@ export default defineComponent({
 #header p {
   font-size: 1.5rem;
   color: aliceblue;
-  /*white-space: nowrap;*/
 }
 </style>

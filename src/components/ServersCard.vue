@@ -21,7 +21,7 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style>
 #cards {
   padding-top: 3.4rem;
   padding-bottom: 3.5rem;
