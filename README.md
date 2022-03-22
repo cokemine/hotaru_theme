@@ -1,18 +1,28 @@
 # Hotaru_theme
 
-基于Vue 3.0和Semantic UI打造的”船新“ServerStatus主题，借鉴了一点KRATOS主题的样式，模仿了Loc大佬分享的主题样式。
+基于 Vue 3 和 Semantic UI 打造的“船新” ServerStatus 主题。
 
-本仓库存放了ServerStatus-Hotaru默认主题的源码。
-
-关于本仓库默认使用的图片素材的说明请见下方项目仓库。
+本仓库存放了 ServerStatus-Hotaru 默认前端的源码。
 
 关于自定义主题：
 
-如果仅修改标题、副标题、页脚和更新数据的间隔，可以直接修改根目录下的`config.js`文件。其他如更换素材、背景图片、对其他文字的修改等建议修改本仓库代码并重新打包。
+如果仅修改标题、副标题、页脚和更新数据的间隔，可以直接修改根目录下的`config.js`文件。
 
-ServerStatus-Hotaru: https://github.com/CokeMine/ServerStatus-Hotaru
+其他如更换图片、对其他文字的修改等建议修改本仓库代码并重新打包。
 
-原模板：
+ServerStatus-Hotaru: https://github.com/cokemine/ServerStatus-Hotaru
+
+默认图片引用说明：
+
+本仓库引入了以下图片
+
+Pixiv: 86597206
+
+nisekoi.jp
+
+如需用做商业用途请更换以上图片。
+
+样式参考自：
 
 https://www.hostloc.com/thread-494384-1-1.html 
 
@@ -37,5 +47,4 @@ npm run build
 ```
 npm run lint
 ```
-
 
