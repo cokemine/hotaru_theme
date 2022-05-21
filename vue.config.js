@@ -25,10 +25,5 @@ module.exports = {
       .options({
         symbolId: '[name]'
       });
-  },
-  configureWebpack: {
-    externals: {
-      'axios': 'axios',
-    }
   }
 };
