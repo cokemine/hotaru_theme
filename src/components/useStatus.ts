@@ -1,4 +1,5 @@
 import { computed } from 'vue';
+import { BoxItem, StatusItem } from '@/types';
 
 interface Props {
   server: StatusItem | BoxItem;

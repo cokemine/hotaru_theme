@@ -9,11 +9,12 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
 import CardItem from '@/components/CardItem.vue';
+import { StatusItem } from '@/types';
 
 export default defineComponent({
   name: 'ServersCard',
   props: {
-    servers: Array as PropType<Array<StatusItem | BoxItem>>
+    servers: Array as PropType<Array<StatusItem>>
   },
   components: {
     CardItem

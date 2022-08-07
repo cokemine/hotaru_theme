@@ -1,4 +1,5 @@
 const resolve = d => require('path').resolve(__dirname, d);
+
 module.exports = {
   publicPath: './',
   pages: {

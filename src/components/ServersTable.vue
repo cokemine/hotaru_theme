@@ -28,12 +28,13 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
 import TableItem from '@/components/TableItem.vue';
+import { StatusItem } from '@/types';
 
 export default defineComponent({
   name: 'ServersTable',
   props: {
     servers: {
-      type: Array as PropType<Array<StatusItem | BoxItem>>,
+      type: Array as PropType<Array<StatusItem>>,
       default: () => ([])
     }
   },

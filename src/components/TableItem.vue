@@ -65,12 +65,13 @@
 <script lang="ts">
 import { defineComponent, ref, PropType } from 'vue';
 import useStatus from './useStatus';
+import { StatusItem } from '@/types';
 
 export default defineComponent({
   name: 'TableItem',
   props: {
     server: {
-      type: Object as PropType<StatusItem | BoxItem>,
+      type: Object as PropType<StatusItem>,
       default: () => ({})
     }
   },

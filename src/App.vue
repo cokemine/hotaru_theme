@@ -19,6 +19,7 @@ import ServersTable from '@/components/ServersTable.vue';
 import UpdateTime from '@/components/UpdateTime.vue';
 import ServersCard from '@/components/ServersCard.vue';
 import TheFooter from '@/components/TheFooter.vue';
+import { BoxItem, StatusItem } from '@/types';
 
 export default defineComponent({
   name: 'App',
@@ -41,7 +42,7 @@ export default defineComponent({
         updated.value = Number(res.data.updated);
       })
       .catch(err => console.log(err));
-    onMounted(() => runFetch() && (timer = setInterval(runFetch, interval * 1000)));
+    onMounted(() => (runFetch(), true) && (timer = setInterval(runFetch, interval * 1000)));
     onBeforeUnmount(() => clearInterval(timer));
     return {
       servers,
