@@ -1,5 +1,7 @@
 # Hotaru_theme
 
+**Notice:** See: https://github.com/cokemine/hotaru_theme/commit/ae80618
+
 基于 Vue 3 和 Semantic UI 打造的“船新” ServerStatus 主题。
 
 本仓库存放了 ServerStatus-Hotaru 默认前端的源码。
